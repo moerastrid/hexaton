@@ -6,44 +6,29 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:37:09 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/08 15:03:18 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/08 17:02:09 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/hexathon.h"
 
-void	ft_draw_hexagon(int32_t x, int32_t y, int32_t radi, uint32_t color, mlx_image_t *img)
+void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, const char *path)
 {
-	double			width;
-	int				j;
-	int				i;
-	mlx_texture_t*	buffer;
+	mlx_texture_t	*texture;
 
-	buffer = calloc(1000, 8);
-	buffer = mlx_load_png("src/test.png");
-	mlx_draw_texture(img, buffer, 300, 300);
-	width = radi + 2 * ((radi / 2) / sqrt(3));
-	j = 0;
-	while (j <= width)
-	{
-		i = 0;
-		while (i <= width)
-		{
-			ft_pixelputwrap(img, x + i, y + j, color);
-			i++;
-		}
-		i = 0;
-		j++;
-	}
-	printf("width  : %1f\n", width);
-	free(buffer);
-	ft_pixelputwrap(img, x, y, color);
+	texture = mlx_load_png(path);
+	mlx_draw_texture_wrap(img, texture, x, y);
+	mlx_delete_texture(texture);
 }
 
 void	ft_draw(t_vari data, mlx_image_t *img)
 {
-	ft_draw_hexagon(200, 200, 50, 0xFFFFFFFF, img);
-	printf("hey");
+	int	i;
+	int j;
+	
+	ft_draw_hexagon(200, 200, img, "include/hexa.png");
+	ft_draw_hexagon(264, 200, img, "include/hexb.png");
+	ft_draw_hexagon(232, 254, img, "include/hexc.png");
 }
 
 
