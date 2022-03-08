@@ -49,7 +49,7 @@ char	random_tile_grabber(t_player *tiles, char player)
 		return('X');
 }
 
-int main(void)
+int ft_colorbag(void)
 {
 	//2 random from purple and blue
 	//2 random form red and orange

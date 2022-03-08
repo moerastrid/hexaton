@@ -6,15 +6,15 @@
 #    By: ageels <ageels@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/07 16:22:41 by ageels        #+#    #+#                  #
-#    Updated: 2022/03/07 16:54:52 by ageels        ########   odam.nl          #
+#    Updated: 2022/03/07 21:28:22 by ageels        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= hexathon
-CFLAGS	= -w -Wunreachable-code -Ofast
+CFLAGS	= -w -Wunreachable-code -Ofast -g
 LIBMLX	= ./lib/MLX42
 
-HEADERS	= -I ./include -I $(LIBMLX)/include
+HEADERS	= -I $(LIBMLX)/include
 LIBS	= -lglfw -L /Users/$(USER)/.brew/opt/glfw/lib/ $(LIBMLX)/libmlx42.a
 SRCS	= $(shell find ./src -iname "*.c")
 OBJS	= ${SRCS:.c=.o}
@@ -38,7 +38,7 @@ libmlx:
 	@$(MAKE) -C $(LIBMLX)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "$(GREEN)$(BOLD)\rCompiling: $(notdir $<)\r\e[35C[OK]\n$(RESET)"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) $(LIBS) && printf "$(GREEN)$(BOLD)\rCompiling: $(notdir $<)\r\e[35C[OK]\n$(RESET)"
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)

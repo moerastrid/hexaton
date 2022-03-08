@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
+/*   wrap.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/07 16:18:27 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/07 21:35:00 by ageels        ########   odam.nl         */
+/*   Created: 2022/03/07 19:30:43 by ageels        #+#    #+#                 */
+/*   Updated: 2022/03/07 21:30:40 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/hexathon.h"
 
-int	main(void)
+void	ft_stop(mlx_t *mlx)
 {
-	t_vari		data;
-	mlx_t		*mlx;
-	mlx_image_t	*img;
+	//system("leaks hexathon");
+	mlx_terminate(mlx);
+}
 
-	data.shape = 0;
-	data.size = 5;
-	data.colors = 2;
-	data.figure = 0;
-	data.grid = ft_grid(&data);
-	mlx = mlx_init(1000, 1000, "hexathon", false);
-	img = mlx_new_image(mlx, 1000, 1000);
-	mlx_image_to_window(mlx, img, 0, 0, 0);
-	ft_draw(data, img);
-	mlx_loop(mlx);
-	ft_stop(mlx);
-	free(data.grid);
-	return (0);
+void	ft_pixelputwrap(mlx_image_t *img, int x, int y, unsigned int color)
+{
+	if (x < img->width && y < img->height)
+		mlx_put_pixel(img, x, y, color);
 }
