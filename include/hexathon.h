@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 16:38:46 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/08 19:00:45 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/08 19:58:50 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,17 @@ typedef struct s_vari
 	char	max_tiles;
 	t_player	player1;
 	t_player	player2;
+	mlx_t		*mlx;
+	mlx_image_t	*img;
 }		t_vari;
 
 char	**ft_setup_grid(void);
 int		ft_total_size_grid(t_vari *data);
 char	**ft_grid(t_vari *data);
 void	ft_pixelputwrap(mlx_image_t *img, int x, int y, unsigned int color);
-void	ft_draw(t_vari data, mlx_image_t *img);
+void	ft_draw(t_vari *data, mlx_image_t *img);
 void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c);
 int		ft_colorbag_player1(t_vari *data);
-int		ft_colorbag_player2(t_vari *data);
+int			ft_colorbag_player2(t_vari *data);
+mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
 #endif

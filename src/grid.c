@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:28:56 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/08 19:04:04 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/08 20:27:30 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,9 @@ char	**ft_grid(t_vari *data)
 	char	**grid;
 
 	total_size = ft_total_size_grid(data);
-	//printf("size : %d\n", total_size);
 	if (total_size == 61)
-	{
 		grid = ft_setup_grid();
-	}
+	else
+		printf("please change data->size to 5");
 	return (grid);
 }
