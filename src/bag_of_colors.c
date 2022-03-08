@@ -1,63 +1,71 @@
-#include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <string.h>
-#include <time.h>
+#include "../include/hexathon.h"
 
-// hex grid 5 -> 61 hex squares
-// amount of color chips (61/16) * 4 = 12 (per player)
-// equal distribution of color chips? (for now, yes!)
-
-typedef struct s_vari
-{
-	int	size;
-	int	colors;
-	int	shape;
-	int	figure;
-}		t_vari;
-
-typedef struct s_player
-{
-	char tile_set[13];
-	char tile1;
-	char tile2;
-}	t_player;
-
-char	random_tile_grabber(t_player *tiles, char player)
+char	random_tile_grabber1(t_vari *data)
 {
 	char ret;
-	int upper = 12;
+	data->max_tiles = ((61 / 16 ) * 4);
+	int upper = data->max_tiles;
 	int lower = 0;
-	if (player == '1')
-	{
-		size_t len = strlen(tiles->tile_set);
-		if (len == 0) /* We are all out of characters */
-			return (-1);
-		/* Select a character at random */
-		int rv = (rand() % (upper - lower + 1)) + lower;
-		printf("Random (?) number: %i\n", rv);
-		ret = tiles->tile_set[rv];
-		tiles->tile_set[rv] = 'X';
-		/* Remove the selected character from the set */ 
-		tiles->tile_set[rv] = tiles->tile_set[len - 1];
-		tiles->tile_set[len - 1] = '\0';
-		/* Return the character */
-		return (ret);
-	}
-	else
-		return('X');
+
+	size_t len = strlen(data->player1.tile_set);
+	if (len == 0) /* We are all out of characters */
+		return (-1);
+	/* Select a character at random */
+	int rv = (arc4random() % (upper - lower + 1)) + lower;
+	printf("Random (?) number: %i\n", rv);
+	ret = data->player1.tile_set[rv];
+	/* Remove the selected character from the set */ 
+	data->player1.tile_set[rv] = data->player1.tile_set[len - 1];
+	data->player1.tile_set[len - 1] = '\0';
+	upper--; //reducing upper limit for using arc4random
+	/* Return the character */
+	printf("inside tile grabber: %c\n", ret);
+	return (ret);
 }
 
-int ft_colorbag(void)
+char	random_tile_grabber2(t_vari *data)
 {
-	//2 random from purple and blue
-	//2 random form red and orange
-	t_player tiles;
-	char player = '1';
-	strcpy(tiles.tile_set, "ppppppbbbbbb");
-	srand(time(0));
-	tiles.tile1 = random_tile_grabber(&tiles, player);
-	tiles.tile2 = random_tile_grabber(&tiles, player);
-	printf("Tile 1 is: %c\nTile 2 is: %c\n", tiles.tile1, tiles.tile2);
+	char ret;
+	data->max_tiles = ((61 / 16 ) * 4);
+	int upper = data->max_tiles;
+	int lower = 0;
+
+	size_t len = strlen(data->player2.tile_set);
+	if (len == 0) /* We are all out of characters */
+		return (-1);
+	/* Select a character at random */
+	int rv = (arc4random() % (upper - lower + 1)) + lower;
+	printf("Random (?) number: %i\n", rv);
+	ret = data->player2.tile_set[rv];
+	/* Remove the selected character from the set */ 
+	data->player2.tile_set[rv] = data->player2.tile_set[len - 1];
+	data->player2.tile_set[len - 1] = '\0';
+	upper--; //reducing upper limit for using arc4random
+	/* Return the character */
+	printf("inside tile grabber: %c\n", ret);
+	return (ret);
+}
+
+int ft_colorbag_player1(t_vari *data)
+{
+	// player 1: 2 random from purple and blue
+	
+	strcpy(data->player1.tile_set, "ppppppbbbbbb");
+	printf("Tile set: %s\n", data->player1.tile_set);
+	data->player1.tile1 = random_tile_grabber1(&data);
+	data->player1.tile2 = random_tile_grabber1(&data);
+	printf("Tile 1 is: %c\nTile 2 is: %c\n", data->player1.tile1, data->player1.tile2);
+}
+
+int ft_colorbag_player2(t_vari *data)
+{
+	// player 2: 2 random from red and orange
+	
+	strcpy(data->player2.tile_set, "rrrrrroooooo");
+	printf("Tile set: %s\n", data->player2.tile_set);
+	data->player2.tile1 = random_tile_grabber2(&data);
+	data->player2.tile2 = random_tile_grabber2(&data);
+	printf("Tile 1 is: %c\nTile 2 is: %c\n", data->player2.tile1, data->player2.tile2);
 }

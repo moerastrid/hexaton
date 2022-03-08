@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #include "../include/hexathon.h"
+#include <stdio.h>
 
-int	main(void)
+int		main(int argc, char *argv[])
 {
 	t_vari		data;
 	mlx_t		*mlx;
@@ -30,5 +31,24 @@ int	main(void)
 	mlx_loop(mlx);
 	ft_stop(mlx);
 	free(data.grid);
+
+
+	int i;
+
+	i = 0;
+    printf("%d\n",argc);
+    while (i < argc)
+    {
+        printf("%s\n", argv[i]);
+		i++;
+    }
+
+    if (argc != 3)
+    {
+        printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
+        return 1;
+    }
+
+
 	return (0);
 }
