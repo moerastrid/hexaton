@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "hexathon.h": "c"
+        "hexathon.h": "c",
+        "__tuple": "c",
+        "array": "c"
     }
 }

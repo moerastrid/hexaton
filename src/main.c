@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 16:18:27 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/08 15:26:54 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/08 20:04:59 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ int		main(int argc, char *argv[])
 	data.figure = 0;
 	data.grid = ft_grid(&data);
 	mlx = mlx_init(WIDTH, HEIGHT, "hexathon", false);
-	img = mlx_new_image(mlx, WIDTH, HEIGHT);
+	img = mlx_new_image(mlx, mlx->width, mlx->height);
+	data.mlx = mlx;
+	data.img = img;
+	ft_draw(&data, img);
 	mlx_image_to_window(mlx, img, 0, 0, 0);
-	ft_draw(data, img);
+	mlx_key_hook(mlx, ft_keypress, &data);
 	mlx_loop(mlx);
 	ft_stop(mlx);
 	free(data.grid);
-
 
 	int i;
 
@@ -42,13 +44,10 @@ int		main(int argc, char *argv[])
         printf("%s\n", argv[i]);
 		i++;
     }
-
     if (argc != 3)
     {
         printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
         return 1;
     }
-
-
 	return (0);
 }
