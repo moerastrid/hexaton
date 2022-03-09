@@ -6,33 +6,13 @@
 /*   By: mvan-der <mvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:45:38 by mvan-der      #+#    #+#                 */
-/*   Updated: 2022/03/09 10:56:26 by mvan-der      ########   odam.nl         */
+/*   Updated: 2022/03/09 11:35:08 by mvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdio.h>
 #include "../include/hexathon.h"
-
-char	random_tile_grabber(t_player *player)
-{
-	char ret;
-	int upper = 12;
-	int lower = 0;
-
-	size_t len = strlen(player->tile_set);
-	if (len == 0) /* We are all out of characters */
-		return (-1);
-	/* Select a character at random */
-	int rv = (arc4random() % (upper - lower + 1)) + lower;
-	ret = player->tile_set[rv];
-	/* Remove the selected character from the set */ 
-	player->tile_set[rv] = player->tile_set[len - 1];
-	player->tile_set[len - 1] = '\0';
-	upper--; //reducing upper limit for using arc4random
-	/* Return the character */
-	return (ret);
-}
 
 char	random_tile_grabber1(t_vari *data)
 {
