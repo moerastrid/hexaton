@@ -9,7 +9,7 @@ int		main(int argc, char *argv[])
 
 	data.shape = 0;
 	//data.size = SIDE;
-	data.size = 9;
+	data.size = 4;
 	data.colors = 2;
 	data.figure = 0;
 	data.max_tiles = (3 * (data.size * data.size)) - (3 * data.size) + 1;
@@ -24,6 +24,7 @@ int		main(int argc, char *argv[])
 	data.img = img;
 	ft_convert(&data);
 	ft_draw(&data, img);
+	ft_win(&data);
 	mlx_image_to_window(mlx, img, 0, 0, 0);
 	mlx_key_hook(mlx, ft_keypress, &data);
 	mlx_loop(mlx);

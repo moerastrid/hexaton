@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:37:09 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 16:56:50 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 20:00:51 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c, t_vari *dat
 void	ft_draw(t_vari *data, mlx_image_t *img)
 {
 	ft_fill(data);
+	// data->grid[0][0] = 'b';
+	// data->grid[1][0] = 'c';
+	// data->grid[0][1] = 'd';
 	for (int j = 0; data->grid[j] != NULL; j++)
 	{
 		for (int i = 0; data->grid[j][i] != '\0'; i++)

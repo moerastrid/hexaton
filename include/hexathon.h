@@ -6,7 +6,8 @@
 # include <math.h>
 # define WIDTH 1200
 # define HEIGHT 1200
-# define SIDE 8
+# define SIDE 5
+# define INROW 3
 # include <string.h>
 # include <time.h>
 
@@ -26,6 +27,7 @@ typedef struct s_vari
 	char	**grid;
 	int		max_tiles;
 	int		max_colors;
+	bool	win;
 	t_player	*player1;
 	t_player	*player2;
 	mlx_t		*mlx;
@@ -45,5 +47,5 @@ char		random_tile_grabber2(t_vari *data);
 t_player	*ft_create_bag_of_colors(t_vari *data, char *color1, char *color2);
 int			ft_picking_tiles(t_vari *data, int current_player);
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
-void    	ft_win(void *invar)
+//void    	ft_win(void *invar);
 #endif
