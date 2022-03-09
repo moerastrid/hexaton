@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   main.c                                             :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: ageels <ageels@student.codam.nl>             +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/03/07 16:18:27 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 17:07:36 by ageels        ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/hexathon.h"
 #include <stdio.h>
 
@@ -21,13 +9,15 @@ int		main(int argc, char *argv[])
 
 	data.shape = 0;
 	//data.size = SIDE;
-	data.size = 5;
+	data.size = 9;
 	data.colors = 2;
 	data.figure = 0;
+	data.max_tiles = (3 * (data.size * data.size)) - (3 * data.size) + 1;
+	data.max_colors = (data.max_tiles / 16) * 4;
 	data.grid = ft_grid(&data);
-	//ft_create_bag_of_colors(&data);
-	//ft_choose_color(&data, 1); //player 1
-	//ft_choose_color(&data, 2); //player 2
+	ft_create_bags_of_colors(&data);
+	ft_picking_tiles(&data, 1); //player 1, 2 tiles
+	// ft_picking_tiles(&data, 2); //player 2, 2 tiles
 	mlx = mlx_init(WIDTH, HEIGHT, "hexathon", false);
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;
