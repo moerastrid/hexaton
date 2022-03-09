@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 16:38:46 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 14:49:30 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 17:06:04 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ char		**ft_setup_grid(int side);
 char		**ft_grid(t_vari *data);
 void		ft_pixelputwrap(mlx_image_t *img, int x, int y, unsigned int color);
 void		ft_draw(t_vari *data, mlx_image_t *img);
-void		ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c);
+void		ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c, t_vari *data);
 char		*random_tile_grabber1(t_vari *data);
 char		random_tile_grabber2(t_vari *data);
 void		ft_create_bag_of_colors(t_vari *data);
 int			ft_choose_color(t_vari *data, int current_player);
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
+void    	ft_win(void *invar)
 #endif

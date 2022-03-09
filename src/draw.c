@@ -6,13 +6,13 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:37:09 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 16:07:35 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 16:56:50 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/hexathon.h"
 
-void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c)
+void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c, t_vari *data)
 {
 	mlx_texture_t	*texture;
 
@@ -38,9 +38,9 @@ void	ft_draw(t_vari *data, mlx_image_t *img)
 		for (int i = 0; data->grid[j][i] != '\0'; i++)
 		{
 			if (j < (data->size -1))
-				ft_draw_hexagon(150 + (j * 58), 300 + (i * 67) - (35 * j), img, data->grid[j][i]);
+				ft_draw_hexagon(150 + (j * 58), 300 + (i * 67) - (35 * j), img, data->grid[j][i], data);
 			else
-				ft_draw_hexagon(150 + (j * 58), 300 + (i * 67) + (35 * (j - (data->size * 2 - 2))), img, data->grid[j][i]);
+				ft_draw_hexagon(150 + (j * 58), 300 + (i * 67) + (35 * (j - (data->size * 2 - 2))), img, data->grid[j][i], data);
 		}
 	}
 }
