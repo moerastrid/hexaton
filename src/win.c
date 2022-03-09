@@ -8,7 +8,7 @@ bool ft_checkbelow(int j, int i, t_vari *data, char currentc, int counter)
 	counter++;
 	if (counter == INROW)
 		return (true);
-	return(ft_checkbelow(j, i, data, data->grid[j][i], counter) == true);
+	return(ft_checkbelow(j, i, data, data->grid[j][i], counter));
 }
 
 bool    ft_wincheck(t_vari	*data)
