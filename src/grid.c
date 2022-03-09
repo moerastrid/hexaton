@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:28:56 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 11:15:06 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 11:57:39 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,34 +40,11 @@ char	**ft_setup_grid(int side)
 	return (array);
 }
 
-// int	ft_total_size_grid(t_vari *data)
-// {
-// 	int	length;
-// 	int	length_2;
-// 	int	count;
-
-// 	length = data->size;
-// 	length_2 = length;
-// 	count = 1;
-// 	while (count < length_2 - 1)
-// 	{
-// 		length += length_2 + count;
-// 		count++;
-// 	}
-// 	length *= 2;
-// 	length += length_2 * 2 - 1;
-// 	return (length);
-// }
-
 char	**ft_grid(t_vari *data)
 {
 	int		total_size;
 	char	**grid;
 
-	//total_size = ft_total_size_grid(data);
-	//if (total_size == 61)
 	grid = ft_setup_grid(data->size);
-	//else
-	//	printf("please change data->size to 5");
 	return (grid);
 }
