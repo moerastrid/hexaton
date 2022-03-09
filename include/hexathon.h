@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   hexathon.h                                         :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: ageels <ageels@student.codam.nl>             +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/03/07 16:38:46 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 11:56:47 by ageels        ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef HEXATHON_H
 # define HEXATHON_H
 # include <stdlib.h>
@@ -48,9 +36,8 @@ char		**ft_grid(t_vari *data);
 void		ft_pixelputwrap(mlx_image_t *img, int x, int y, unsigned int color);
 void		ft_draw(t_vari *data, mlx_image_t *img);
 void		ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c);
-int			ft_colorbag_player1(t_vari *data);
-int			ft_colorbag_player2(t_vari *data);
-void	ft_create_bag_of_colors(t_vari *data);
-void	ft_pick_2_colors(t_vari *data);
+char		random_tile_grabber1(t_vari *data);
+char		random_tile_grabber2(t_vari *data);
+void		ft_create_bag_of_colors(t_vari *data);
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
 #endif
