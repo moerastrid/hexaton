@@ -3,7 +3,7 @@
 
 bool ft_checkbelow(int j, int i, t_vari *data, char currentc, int counter)
 {
-	if (data->grid[j][i+1] == '\0' && data->grid[j][i] != data->grid[j][i+1])
+	if (data->grid[j][i+1] == '\0' || data->grid[j][i] != data->grid[j][i+1])
 		return (false);
 	counter++;
 	if (counter == INROW)
