@@ -1,9 +1,20 @@
 #include "../include/hexathon.h"
 #include <stdio.h>
 
-bool ft_checkbelow()
+bool ft_checkbelow(int j, int i, t_vari *data, char currentc, int counter)
 {
-
+	if (data->grid[j][i+1] == '\0' && data->grid[j][i] != data->grid[j][i+1])
+		return (false);
+	else
+	{
+		counter++;
+		if (counter == INROW)
+			return (true);
+		else if (ft_checkbelow(j, i, data, data->grid[j][i], counter) == true))
+			return (true);
+		else
+			return (false);
+	}
 }
 
 bool    ft_wincheck(t_vari	*data)
@@ -15,7 +26,8 @@ bool    ft_wincheck(t_vari	*data)
     {
         for(int i = 0; data->grid[j][i] != '\0'; i++)
         {
-			if (ft_checkbelow() == true)
+			int counter = 1;
+			if (ft_checkbelow(j, i, data, data->grid[j][i], counter) == true)
 			{
 				return (true);
 			}
