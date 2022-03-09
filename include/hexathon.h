@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 16:38:46 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 11:32:21 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 11:56:47 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <math.h>
 # define WIDTH 1200
 # define HEIGHT 1200
+# define SIDE 8
 # include <string.h>
 # include <time.h>
 

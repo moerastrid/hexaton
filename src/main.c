@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 16:18:27 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 11:32:47 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 11:57:16 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		main(int argc, char *argv[])
 	mlx_image_t	*img;
 
 	data.shape = 0;
-	data.size = 8;
+	//data.size = SIDE;
+	data.size = 5;
 	data.colors = 2;
 	data.figure = 0;
 	data.grid = ft_grid(&data);
