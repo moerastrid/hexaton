@@ -1,42 +1,71 @@
 #include "../include/hexathon.h"
 
-void    ft_convert(char *input)
+void    ft_convert(t_vari *data)
 {
+    char    input[] = "brrs";
+
+    char    color;
+    int     xpos;
+    int     rotation;
+
+    rotation = 0;    
+    xpos = data->size - 1;
+
     for(int i = 0; input[i] != '\0'; i++)
     {
-        if (input[i] == 'a')
+        if (input[i] == 'a' && (input[i+1] == 'l' || input[i+1] == 'r' || input[i+1] == 's'))
         {
-            ft_rotate();
+            rotation = 1;
         }
-        else if (input[i] == 'b')
+        else if (input[i] == 'b' && (input[i+1] == 'l' || input[i+1] == 'r' || input[i+1] == 's'))
         {
-            
+            color = 'b';
+            //ft_update_bag();
         }
-        else if (input[i] == 'c')
+        else if (input[i] == 'c' && (input[i+1] == 'l' || input[i+1] == 'r' || input[i+1] == 's'))
         {
-        
+            color = 'c';
+            //ft_update_bag();
         }
-        else if (input[i] == 'd')
+        else if (input[i] == 'd' && (input[i+1] == 'l' || input[i+1] == 'r' || input[i+1] == 's'))
         {
-        
+            color = 'd';
+            //ft_update_bag();
         }
-        else if (input[i] == 'e')
+        else if (input[i] == 'e' && (input[i+1] == 'l' || input[i+1] == 'r' || input[i+1] == 's'))
         {
-        
+            color = 'e';
+            //ft_update_bag();
         }
         else if (input[i] == 'l')
         {
-            ft_move_left();
+            if (rotation == 0)
+            {
+                xpos -= 1;
+            }
+            else
+                ft_rotate_left();
         }
         else if (input[i] == 'r')
         {
-            ft_move_right();
+            if (rotation == 0)
+                xpos += 1;
+            else
+            {
+                ft_rotate_right();
+            }
         }
-        else if (input[i] == 's')
+        else if (input[i] == 's' && input[i+1] == '\0')
         {
-        
+            data->grid[xpos][0] = color;
+            gravity(data->grid, xpos);
+            return ;
         }
-        else 
+        else
+        {
+            mlx_close_window(data->mlx);
             printf("invalid input");
+        }
     }
+    return ;
 }
