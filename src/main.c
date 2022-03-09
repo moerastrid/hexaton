@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 16:18:27 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 11:32:47 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 13:31:35 by mvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ int		main(int argc, char *argv[])
 	data.figure = 0;
 	data.grid = ft_grid(&data);
 	ft_create_bag_of_colors(&data);
-	data.player1.tile1 = random_tile_grabber1(&data);
-	data.player1.tile2 = random_tile_grabber1(&data);
-// choose function, if a tile is chosen the other goes back in bag. If no tile is chosen -> rotate
+	ft_choose_color(&data, 1); //player 1
+	ft_choose_color(&data, 2); //player 2
 	mlx = mlx_init(WIDTH, HEIGHT, "hexathon", false);
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;
