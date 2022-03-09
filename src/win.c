@@ -1,6 +1,11 @@
 #include "../include/hexathon.h"
 #include <stdio.h>
 
+bool ft_checkbelow()
+{
+
+}
+
 bool    ft_wincheck(t_vari	*data)
 {
 	int ia;
@@ -10,7 +15,10 @@ bool    ft_wincheck(t_vari	*data)
     {
         for(int i = 0; data->grid[j][i] != '\0'; i++)
         {
-
+			if (ft_checkbelow() == true)
+			{
+				return (true);
+			}
         }
     }
     return(false);
