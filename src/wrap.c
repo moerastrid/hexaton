@@ -6,17 +6,11 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:30:43 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 11:26:46 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 16:13:28 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/hexathon.h"
-
-void	ft_stop(mlx_t *mlx)
-{
-	//system("leaks hexathon");
-	mlx_terminate(mlx);
-}
 
 uint32_t ft_getpixel(uint8_t* pixel)
 {
@@ -39,7 +33,7 @@ bool my_mlx_draw_texture(mlx_image_t* image, mlx_texture_t* texture, int32_t x, 
 		for (size_t i = 0; i < texture->width; i++)
 		{
 			pixelx = &texture->pixels[(j * texture->width + i) * texture->bytes_per_pixel];
-			if (*(pixelx+3) == 0)
+			if (*(pixelx + 3) == 0)
 				continue;
 			ft_pixelputwrap(image, x + i, y + j, ft_getpixel(pixelx));
 		}
