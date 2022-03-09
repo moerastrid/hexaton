@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:30:43 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/08 17:01:45 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/09 11:26:46 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ void	mlx_draw_texture_wrap(mlx_image_t *img, mlx_texture_t *texture, int32_t x, 
 	if (x < img->width && (x + texture->width) < img->width && y < img->height && (y + texture->height) < img->height)
 		my_mlx_draw_texture(img, texture, x, y);
 	else
-		printf("trying to put texture outside your image");
+		printf("error\n");
 }
