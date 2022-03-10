@@ -47,8 +47,8 @@ void    ft_convert_input(t_vari *data, char *input)
 		}
 		else
 		{
-			mlx_close_window(data->mlx);
 			printf("invalid input");
+			mlx_close_window(data->mlx);
 		}
 	}
 	return ;

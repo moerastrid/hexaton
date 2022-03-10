@@ -30,7 +30,7 @@ char	*ft_convert_map(t_vari *data)
 	return(temp);
 }
 
-void	ft_makeoutput(t_vari *data)
+char	*ft_makeoutput(t_vari *data)
 {
 	char *mapstring;
 	char *side;
@@ -38,27 +38,21 @@ void	ft_makeoutput(t_vari *data)
 	int fd = 1;
 	
 	side = ft_itoa(SIDE);
-	inrow = ft_itoa(INROW);
-	mapstring = ft_convert_map(data);
-	//write(fd, "vanaf", 5);
-	write(fd, side, strlen(side));
+	mapstring = ft_strdup(side);
 	free(side);
-	write(fd, ",", 1);
-	write(fd, inrow, strlen(inrow));
+	inrow = ft_itoa(INROW);
+	mapstring = ft_strjoin(mapstring, inrow);
 	free(inrow);
-	write(fd, ",", 1);
 	if (data->currentplayer == 1)
 	{
-		write(fd, &data->player1->tile1, 1);
-		write(fd, &data->player1->tile2, 1);
+		mapstring = ft_strjoin(mapstring, data->player1->tile1);
+		mapstring = ft_strjoin(mapstring, data->player1->tile2);
 	}
 	else if (data->currentplayer == 2)
 	{
-		write(fd, &data->player2->tile1, 1);
-		write(fd, &data->player2->tile2, 1);
+		mapstring = ft_strjoin(mapstring, data->player2->tile1);
+		mapstring = ft_strjoin(mapstring, data->player2->tile2);
 	}
-	write(fd, ",", 1);
-	write(fd, mapstring, strlen(mapstring));
-	free(mapstring);
-	write(fd, "\n", 1);
+	mapstring = ft_strjoin(mapstring, ft_convert_map(data));
+	return (mapstring);
 }
