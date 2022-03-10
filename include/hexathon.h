@@ -83,6 +83,7 @@ void	ft_draw(t_vari *data,mlx_texture_t *hexagons[]);
 void    ft_fill(t_vari *data);
 //gravity
 void    gravity(char **grid, int xpos);
+void	full_one_eighty(data->grid, data->size);
 //grid
 char	**ft_setup_grid(int side);
 char	**ft_grid(t_vari *data);
