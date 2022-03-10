@@ -9,13 +9,19 @@ int	 main(void)
 {
 	char input_string[1000];
 	char *output_string = "drrrs";
-
+	char *output_string2 = "errrs";
+	static int i = 0;
+	
 	while(1)
 	{
-		// write(1, "a", 1);
+		i++; // write(1, "a", 1);
 		scanf("%s", input_string);
 		//num += 1;
-		printf("%s\n", output_string);
+		if (i == 3)
+			printf("%s\n", output_string2);
+		else
+			printf("%s\n", output_string);
+		
 		fflush(stdout);
 	}
 	return(0);

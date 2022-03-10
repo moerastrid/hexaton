@@ -25,7 +25,11 @@ void	gameloop(void *invar)
 	printf("player %d\n", loopdata->data->currentplayer);
 	if (loopdata->data->currentplayer == 1)
 	{
-		ft_picking_tiles(loopdata->data, 1); //player 1, 2 tiles
+		if(ft_picking_tiles(loopdata->data, 1) == -1) //player 1, 2 tiles
+		{
+			printf("P1 loses");
+			mlx_close_window(loopdata->data->mlx);
+		}
 		ft_makeoutput(loopdata->data);
 		char mijnstring[] = "hoi\n";
 		dprintf(loopdata->player_bot1->stdin[1], "%s", mijnstring);
@@ -35,7 +39,11 @@ void	gameloop(void *invar)
 	}
 	if (loopdata->data->currentplayer == 2)
 	{
-		ft_picking_tiles(loopdata->data, 2); //player 2, 2 tiles
+		if(ft_picking_tiles(loopdata->data, 2) == -1) //player 2, 2 tiles
+		{
+			printf("P2 loses");
+			mlx_close_window(loopdata->data->mlx);
+		}
 		ft_makeoutput(loopdata->data);
 		char mijnstring[] = "hoi2\n";
 		dprintf(loopdata->player_bot2->stdin[1], "%s", mijnstring);
@@ -47,11 +55,6 @@ void	gameloop(void *invar)
 	if (ft_win(loopdata->data) == true)
 		mlx_close_window(loopdata->data->mlx);
 }
-
-// void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[], player_bot_t *player_bot1, player_bot_t *player_bot2)
-// {
-// 	mlx_loop_hook(data->mlx, hookshit, data);
-// }
 
 int		main(int argc, char *argv[])
 {
@@ -66,12 +69,7 @@ int		main(int argc, char *argv[])
 		mlx_load_png("include/hexd.png"),
 		mlx_load_png("include/hexe.png"),
 	};
-	// if (argc != 3)
-    // {
-    //     printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
-    //     return 1;
-    // }
-    player_bot_t player_bot1;
+	player_bot_t player_bot1;
     player_bot_t player_bot2;
 	bzero(&player_bot1, sizeof(player_bot_t));
 	bzero(&player_bot2, sizeof(player_bot_t));
@@ -85,7 +83,7 @@ int		main(int argc, char *argv[])
 	data.figure = 0;
 	data.max_tiles = (3 * (data.size * data.size)) - (3 * data.size) + 1;
 	data.max_colors = (data.max_tiles / 16) * 4;
-	data.grid = ft_grid(&data);
+	data.grid = ft_grid(data.size);
 	ft_create_bags_of_colors(&data);
 	mlx = mlx_init(WIDTH, HEIGHT, "hexathon", false);
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
@@ -108,5 +106,6 @@ int		main(int argc, char *argv[])
 	mlx_loop(mlx);
 
 	ft_free_at_last(&data);
+	while(1);
 	return (0);
 }

@@ -12,8 +12,8 @@
 
 # define WIDTH 1200
 # define HEIGHT 1200
-# define SIDE 5
-# define INROW 4
+# define SIDE 4
+# define INROW 3
 # define EMPTYBAG "No more tiles, you lose\n"
 typedef struct s_player
 {
@@ -75,9 +75,9 @@ void		ft_update_bag(t_vari *data, char color);
 
 
 //bag_of_colors
-char	*ft_charjoin(char const *s1, char s2);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strdup(const char *s);
+char	*ft_charjoin(char *s1, char s2);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(char *s);
 int 	ft_picking_tiles(t_vari *data, int current_player);
 int		ft_create_bags_of_colors(t_vari *data);
 t_player	*ft_create_bag_of_colors(t_vari *data, char *color1, char *color2);
@@ -93,8 +93,7 @@ void    ft_fill(t_vari *data);
 void    gravity(char **grid, int xpos);
 void	full_one_eighty(char **grid, int size);
 //grid
-char	**ft_setup_grid(int side);
-char	**ft_grid(t_vari *data);
+char	**ft_grid(int side);
 //init_player_bot
 int init_player(const char* path, player_bot_t* player);
 //itoa

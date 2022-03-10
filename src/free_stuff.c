@@ -6,7 +6,7 @@
 /*   By: mvan-der <mvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/10 14:09:14 by mvan-der      #+#    #+#                 */
-/*   Updated: 2022/03/10 15:49:19 by mvan-der      ########   odam.nl         */
+/*   Updated: 2022/03/10 21:59:01 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_free_at_last(t_vari *data)
 	free(data->player2);
 }
 
-char	*ft_charjoin(char const *s1, char s2)
+char	*ft_charjoin(char *s1, char s2)
 {
 	char	*newstr;
 	size_t	i;
@@ -59,7 +59,7 @@ char	*ft_charjoin(char const *s1, char s2)
 	return (newstr);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*newstr;
 	size_t	i;
@@ -89,7 +89,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (newstr);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	char	*dest;
 	size_t	i;

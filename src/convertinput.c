@@ -13,7 +13,7 @@ void    ft_convert_input(t_vari *data, char *input)
 
 	for(int i = 0; input[i] != '\0'; i++)
 	{
-		if (input[i] == 'a' && (input[i+1] == 'l' || input[i+1] == 'r' || input[i+1] == 's'))
+		if (input[i] == 'a' && (input[i+1] == '\0'))
 			full_one_eighty(data->grid, data->size);
 		else if (input[i] == 'b' && (input[i+1] == 'l' || input[i+1] == 'r' || input[i+1] == 's'))
 		{
