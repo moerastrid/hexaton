@@ -1,23 +1,40 @@
 #include "../include/hexathon.h"
 #include <stdio.h>
 
+int	ft_turn()
+{
+	static int	turncount = 0;
+	
+	if (turncount % 2 == 0)
+	{
+		turncount++;
+		return (1);
+	}
+	turncount++;
+	return (2);
+}
+
 int		main(int argc, char *argv[])
 {
 	t_vari		data;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 
+	data.currentplayer = ft_turn();
+
+	printf("%d", data.currentplayer);
 	data.shape = 0;
-	//data.size = SIDE;
-	data.size = 4;
+	data.size = SIDE;
 	data.colors = 2;
 	data.figure = 0;
 	data.max_tiles = (3 * (data.size * data.size)) - (3 * data.size) + 1;
 	data.max_colors = (data.max_tiles / 16) * 4;
 	data.grid = ft_grid(&data);
 	ft_create_bags_of_colors(&data);
-	ft_picking_tiles(&data, 1); //player 1, 2 tiles
-	// ft_picking_tiles(&data, 2); //player 2, 2 tiles
+	if (data.currentplayer == 1)
+		ft_picking_tiles(&data, 1); //player 1, 2 tiles
+	if (data.currentplayer == 2)	
+		ft_picking_tiles(&data, 2); //player 2, 2 tiles
 	mlx = mlx_init(WIDTH, HEIGHT, "hexathon", false);
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;
@@ -25,8 +42,9 @@ int		main(int argc, char *argv[])
 	ft_convert(&data);
 	ft_draw(&data, img);
 	ft_win(&data);
-	mlx_image_to_window(mlx, img, 0, 0, 0);
+	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_key_hook(mlx, ft_keypress, &data);
+	mlx_put_string(mlx, "choose:", 15, 20);
 	mlx_loop(mlx);
 
 	// int i;

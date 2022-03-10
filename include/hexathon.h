@@ -28,6 +28,7 @@ typedef struct s_vari
 	int		max_tiles;
 	int		max_colors;
 	bool	win;
+	int		currentplayer;
 	t_player	*player1;
 	t_player	*player2;
 	mlx_t		*mlx;

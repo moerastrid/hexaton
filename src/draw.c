@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:37:09 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 20:00:51 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/10 12:43:24 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ void	ft_draw(t_vari *data, mlx_image_t *img)
 			else
 				ft_draw_hexagon(150 + (j * 58), 300 + (i * 67) + (35 * (j - (data->size * 2 - 2))), img, data->grid[j][i], data);
 		}
+	}
+	if (data->currentplayer == 1)
+	{
+		ft_draw_hexagon(10, 50, img, data->player1->tile1, data);
+		ft_draw_hexagon(75, 50, img, data->player1->tile2, data);
+	}
+	if (data->currentplayer == 2)
+	{
+		ft_draw_hexagon(10, 50, img, data->player2->tile1, data);
+		ft_draw_hexagon(75, 50, img, data->player2->tile2, data);
 	}
 }
 
