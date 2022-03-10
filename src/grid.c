@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:28:56 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/10 16:38:13 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/10 20:54:43 by bde-meij      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,5 @@ char	**ft_setup_grid(int side)
 
 char	**ft_grid(t_vari *data)
 {
-	int		total_size;
-	char	**grid;
-
-	grid = ft_setup_grid(data->size);
-	return (grid);
+	return (ft_setup_grid(data->size));
 }
