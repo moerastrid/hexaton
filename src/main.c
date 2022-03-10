@@ -28,7 +28,8 @@ void	gameloop(void *invar)
 		if(ft_picking_tiles(loopdata->data, 1) == -1) //player 1, 2 tiles
 		{
 			printf("P1 loses");
-			mlx_close_window(loopdata->data->mlx);
+			//mlx_close_window(loopdata->data->mlx);
+			return;
 		}
 		ft_makeoutput(loopdata->data);
 		char mijnstring[] = "hoi\n";
@@ -104,8 +105,8 @@ int		main(int argc, char *argv[])
 	mlx_key_hook(mlx, ft_keypress, &data);
 	mlx_put_string(mlx, "choose:", 15, 20);
 	mlx_loop(mlx);
+	
 
 	ft_free_at_last(&data);
-	while(1);
 	return (0);
 }
