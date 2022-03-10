@@ -23,7 +23,6 @@ char	*ft_convert_map(t_vari *data)
 		{
 			temp[tempi] = data->grid[j][i];
 			tempi++;
-			printf("controle: \t i: %d, j: %d,\t color: %c\n", i, j, data->grid[j][i]);
 		}
 	}
 	//printf("\n map size: %d \n", tempi);

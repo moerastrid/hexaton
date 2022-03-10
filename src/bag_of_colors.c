@@ -6,7 +6,7 @@
 /*   By: mvan-der <mvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:45:38 by mvan-der      #+#    #+#                 */
-/*   Updated: 2022/03/10 16:10:59 by mvan-der      ########   odam.nl         */
+/*   Updated: 2022/03/10 17:45:47 by mvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 			return (printf(EMPTYBAG));
 		/* Select a character at random */
 		int rv = (arc4random() % (upper - lower)) + lower;
-		printf("random number? %d\n", rv);
 		data->player1->tile1 = data->player1->tile_set[rv];
 		/* Remove the selected character from the set */ 
 		data->player1->tile_set[rv] = data->player1->tile_set[upper - 1];
@@ -53,7 +52,6 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 			return (printf(EMPTYBAG));
 		/* Select a character at random */
 		int rv = (arc4random() % (upper - lower)) + lower;
-		printf("random number? %d\n", rv);
 		data->player2->tile1 = data->player2->tile_set[rv];
 		/* Remove the selected character from the set */ 
 		data->player2->tile_set[rv] = data->player2->tile_set[upper - 1];
