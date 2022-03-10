@@ -6,7 +6,7 @@
 # include <math.h>
 # define WIDTH 1200
 # define HEIGHT 1200
-# define SIDE 5
+# define SIDE 8
 # define INROW 4
 # include <string.h>
 # include <time.h>
@@ -66,8 +66,8 @@ void	ft_update_bag(t_vari *data, char color);
 //convertinput
 void    ft_convert_input(t_vari *data);
 //draw
-void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c, t_vari *data, mlx_texture_t *hexagons[]);
-void	ft_draw(t_vari *data, mlx_image_t *img, mlx_texture_t *hexagons[]);
+void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c, mlx_texture_t *hexagons[]);
+void	ft_draw(t_vari *data,mlx_texture_t *hexagons[]);
 //fill
 void    ft_fill(t_vari *data);
 //gravity
@@ -81,7 +81,7 @@ char	*ft_itoa(int n);
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
 //main
 int		ft_turn();
-void	ft_gameloop(t_vari *data, mlx_texture_t **hexagons);
+void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[]);
 //makeoutput
 char	*ft_convert_map(t_vari *data);
 void	ft_makeoutput(t_vari *data);
