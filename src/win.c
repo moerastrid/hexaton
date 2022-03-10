@@ -19,7 +19,7 @@ bool ft_checktoside(int j, int i, t_vari *data, char currentc, int counter)
 {
 	if (currentc == 'a')
 		return (false);
-	if (i < 0 || j < 0)
+	if (i < 0 || j < 0 || j + 1 > ((data->size - 1) * 2))
 		return (false);
 	if (j < (data->size - 1))
 	{
@@ -43,7 +43,7 @@ bool ft_checkotherside(int j, int i, t_vari *data, char currentc, int counter)
 {
 	if (currentc == 'a')
 		return (false);
-	if (i < 0 || j < 0)
+	if (i < 0 || j < 0 || j + 1 > ((data->size - 1) * 2))
 		return (false);
 	if (j >= (data->size - 1))
 	{

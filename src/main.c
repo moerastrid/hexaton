@@ -14,7 +14,7 @@ int	ft_turn()
 	return (2);
 }
 
-void	ft_gameloop(t_vari *data, mlx_texture_t **hexagons)
+void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[])
 {
 	data->currentplayer = ft_turn();
 	printf("player %d\n", data->currentplayer);
@@ -23,7 +23,7 @@ void	ft_gameloop(t_vari *data, mlx_texture_t **hexagons)
 	if (data->currentplayer == 2)
 		ft_picking_tiles(data, 2); //player 2, 2 tiles
 	ft_convert_input(data);
-	ft_draw(data, data->img, hexagons);
+	ft_draw(data, hexagons);
 	ft_makeoutput(data);
 }
 
@@ -52,6 +52,8 @@ int		main(int argc, char *argv[])
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;
 	data.img = img;
+	data.grid[14][0] = 'c';
+	ft_draw(&data, hexagons);
 	while (ft_win(&data) == false)
 	{
 		ft_gameloop(&data, hexagons);
