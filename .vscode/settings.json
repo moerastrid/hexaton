@@ -5,6 +5,10 @@
 		"array": "c",
 		"stdio.h": "c",
 		"stdlib.h": "c",
-		"ratio": "c"
+		"ratio": "c",
+		"iterator": "c",
+		"string": "c",
+		"string_view": "c",
+		"vector": "c"
 	}
 }

@@ -14,40 +14,49 @@ int	ft_turn()
 	return (2);
 }
 
-void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[], player_bot_t *player_bot1, player_bot_t *player_bot2)
+void	gameloop(void *invar)
 {
+	t_loopdata *loopdata;
+	loopdata = (t_loopdata *)invar;
+
 	char *myinput;
 
-	data->currentplayer = ft_turn();
-	printf("player %d\n", data->currentplayer);
-	if (data->currentplayer == 1)
+	loopdata->data->currentplayer = ft_turn();
+	printf("player %d\n", loopdata->data->currentplayer);
+	if (loopdata->data->currentplayer == 1)
 	{
-		ft_picking_tiles(data, 1); //player 1, 2 tiles
-		ft_makeoutput(data);
+		ft_picking_tiles(loopdata->data, 1); //player 1, 2 tiles
+		ft_makeoutput(loopdata->data);
 		char mijnstring[] = "hoi\n";
-		dprintf(player_bot1->stdin[1], "%s", mijnstring);
+		dprintf(loopdata->player_bot1->stdin[1], "%s", mijnstring);
 		sleep(1);
-		printf("Hola?\n");
-		fscanf(player_bot1->reader, "%s", &myinput);
-		printf("Hola2?\n");
-		//ft_convert_input(data, myinput);
+		fscanf(loopdata->player_bot1->reader, "%s", &myinput);
+		ft_convert_input(loopdata->data, &myinput);
 	}
-	if (data->currentplayer == 2)
+	if (loopdata->data->currentplayer == 2)
 	{
-		ft_picking_tiles(data, 2); //player 2, 2 tiles
-		ft_makeoutput(data);
+		ft_picking_tiles(loopdata->data, 2); //player 2, 2 tiles
+		ft_makeoutput(loopdata->data);
 		char mijnstring[] = "hoi2\n";
-		dprintf(player_bot2->stdin[1], "%s", mijnstring);
+		dprintf(loopdata->player_bot2->stdin[1], "%s", mijnstring);
 		sleep(1);
-		fscanf(player_bot2->reader, "%s", &myinput);
-		//ft_convert_input(data, myinput);
+		fscanf(loopdata->player_bot2->reader, "%s", &myinput);
+		ft_convert_input(loopdata->data, &myinput);
 	}
-	ft_draw(data, hexagons);
+	ft_draw(loopdata->data, loopdata->hexagons);
+	if (ft_win(loopdata->data) == true)
+		mlx_close_window(loopdata->data->mlx);
 }
+
+// void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[], player_bot_t *player_bot1, player_bot_t *player_bot2)
+// {
+// 	mlx_loop_hook(data->mlx, hookshit, data);
+// }
 
 int		main(int argc, char *argv[])
 {
 	t_vari		data;
+	t_loopdata	loopdata;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
 	mlx_texture_t *hexagons[] = {
@@ -83,11 +92,17 @@ int		main(int argc, char *argv[])
 	data.mlx = mlx;
 	data.img = img;
 	ft_draw(&data, hexagons);
-	while (ft_win(&data) == false)
+	if (ft_win(&data) == true)
 	{
-		ft_gameloop(&data, hexagons, &player_bot1, &player_bot2);
+		mlx_put_string(mlx, "win", 500, 100);
+		printf("win!");
 	}
 	mlx_image_to_window(mlx, img, 0, 0);
+	loopdata.data = &data;
+	loopdata.hexagons = hexagons;
+	loopdata.player_bot1 = &player_bot1;
+	loopdata.player_bot2 = &player_bot2;
+	mlx_loop_hook(mlx, gameloop, &loopdata);
 	mlx_key_hook(mlx, ft_keypress, &data);
 	mlx_put_string(mlx, "choose:", 15, 20);
 	mlx_loop(mlx);

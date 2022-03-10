@@ -46,6 +46,14 @@ typedef struct s_vari
 	mlx_image_t	*img;
 }		t_vari;
 
+typedef struct s_loopdata
+{
+	t_vari *data;
+	mlx_texture_t **hexagons;
+	player_bot_t *player_bot1;
+	player_bot_t *player_bot2;
+}		t_loopdata;
+
 
 /*
 char		**ft_setup_grid(int side);
