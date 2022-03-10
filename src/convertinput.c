@@ -1,8 +1,12 @@
 #include "../include/hexathon.h"
 
-void    ft_convert(t_vari *data)
+void    ft_convert_input(t_vari *data)
 {
-    char    input[] = "brrs";
+    char    input[] = "bllls";
+	if (!input)
+	{
+		printf("no input");
+	}
 
     char    color;
     int     xpos;

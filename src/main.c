@@ -39,12 +39,15 @@ int		main(int argc, char *argv[])
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;
 	data.img = img;
-	ft_convert(&data);
+	ft_convert_input(&data);
+	ft_convert_input(&data);
+	ft_convert_input(&data);
 	ft_draw(&data, img);
 	ft_win(&data);
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_key_hook(mlx, ft_keypress, &data);
 	mlx_put_string(mlx, "choose:", 15, 20);
+	ft_makeoutput(&data);
 	mlx_loop(mlx);
 
 	// int i;
