@@ -1,4 +1,4 @@
-// bot 2
+// bot 1
 
 #include <stdio.h>
 #include <fcntl.h>
@@ -7,11 +7,14 @@
 int	 main(void)
 {
 	int num;
+	//int filenum = open("test.txt", O_WRONLY | O_CREAT);
 
+	//write(filenum, "test", 4);
 	while(1)
 	{
 		scanf("%*s %d", &num);
-		num += 3;
+		//write(filenum, "test", 4);
+		num += 1;
 		printf("%d\n", num);
 		fflush(stdout);
 	}

@@ -89,6 +89,7 @@ int init_player(const char* path, player_t* player)
 int main(int argc, const char* argv[])
 {
 
+//	printf("test");
     if (argc != 3)
     {
         printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
