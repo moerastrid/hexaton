@@ -1,14 +1,14 @@
 #include "../include/hexathon.h"
 
-void    ft_convert_input(t_vari *data)
+void    ft_convert_input(t_vari *data, char *input)
 {
-	char *input;
+	//char *input;
 
-	input = calloc(10, sizeof(int));
-    if (data->currentplayer == 1)
-		input = "blls";
-	if (data->currentplayer == 2)
-		input = "drrrs";
+	//input = calloc(10, sizeof(int));
+    // if (data->currentplayer == 1)
+	// 	input = "blls";
+	// if (data->currentplayer == 2)
+	// 	input = "drrrs";
 
 	if (!input)
 	{

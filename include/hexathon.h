@@ -2,22 +2,33 @@
 # define HEXATHON_H
 # include <stdlib.h>
 # include <unistd.h>
-# include "MLX42/MLX42.h"
 # include <math.h>
-# define WIDTH 1200
-# define HEIGHT 1200
-# define SIDE 8
-# define INROW 4
 # include <string.h>
 # include <time.h>
-# define EMPTYBAG "No more tiles, you lose\n"
+# include <sys/types.h>
+# include <stdio.h>
+# include <assert.h>
+# include "MLX42/MLX42.h"
 
+# define WIDTH 1200
+# define HEIGHT 1200
+# define SIDE 5
+# define INROW 4
+# define EMPTYBAG "No more tiles, you lose\n"
 typedef struct s_player
 {
 	char	*tile_set;
 	char	tile1;
 	char	tile2;
 }	t_player;
+
+typedef struct s_player_bot
+{
+    pid_t pid;
+    int stdin[2];
+    int stdout[2];
+    FILE* reader;
+} player_bot_t;
 
 typedef struct s_vari
 {
@@ -64,7 +75,7 @@ int		ft_create_bags_of_colors(t_vari *data);
 t_player	*ft_create_bag_of_colors(t_vari *data, char *color1, char *color2);
 void	ft_update_bag(t_vari *data, char color);
 //convertinput
-void    ft_convert_input(t_vari *data);
+void    ft_convert_input(t_vari *data, char *input);
 //draw
 void	ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c, mlx_texture_t *hexagons[]);
 void	ft_draw(t_vari *data,mlx_texture_t *hexagons[]);
@@ -75,13 +86,15 @@ void    gravity(char **grid, int xpos);
 //grid
 char	**ft_setup_grid(int side);
 char	**ft_grid(t_vari *data);
+//init_player_bot
+int init_player(const char* path, player_bot_t* player);
 //itoa
 char	*ft_itoa(int n);
 //keypress
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
 //main
 int		ft_turn();
-void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[]);
+void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[], player_bot_t *player_bot1, player_bot_t *player_bot2);
 //makeoutput
 char	*ft_convert_map(t_vari *data);
 void	ft_makeoutput(t_vari *data);

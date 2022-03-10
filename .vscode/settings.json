@@ -1,7 +1,10 @@
 {
     "files.associations": {
-        "hexathon.h": "c",
-        "__tuple": "c",
-        "array": "c"
-    }
+		"hexathon.h": "c",
+		"__tuple": "c",
+		"array": "c",
+		"stdio.h": "c",
+		"stdlib.h": "c",
+		"ratio": "c"
+	}
 }

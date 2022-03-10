@@ -7,13 +7,13 @@
 
 #define MAX_PLAYER 1
 
-typedef struct s_player
+typedef struct s_player_bot
 {
     pid_t pid;
     int stdin[2];
     int stdout[2];
     FILE* reader;
-} player_t;
+} player_bot_t;
 
 //WARNING: This is a dirty EXAMPLE.
 //       It is not safe and should not be used like this.
@@ -28,7 +28,7 @@ typedef struct s_player
 //+[----->+++<]>+.++++++++++++..----.+++.+[-->+<]>.-----------..++[->++<]>.+++++++.+++++++++++.[++>---<]>.--[-->+++++<]>--.-[--->+<]>.-[----->++<]>-.++++.[--->++++<]>-.--[--->+<]>.>+[--->++<]>++.----------.-[--->+<]>++.>-[--->+<]>.>++++++++++..
 
 
-int init_player(const char* path, player_t* player)
+int init_player(const char* path, player_bot_t* player)
 {
     assert(player != NULL);
     int ret = pipe(player->stdin);
@@ -95,8 +95,8 @@ int main(int argc, const char* argv[])
         printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
         return 1;
     }
-    player_t player;
-	bzero(&player, sizeof(player_t));
+    player_bot_t player;
+	bzero(&player, sizeof(player_bot_t));
     init_player(argv[1], &player);
     init_player(argv[2], &player);
 
