@@ -6,7 +6,7 @@
 /*   By: mvan-der <mvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:45:38 by mvan-der      #+#    #+#                 */
-/*   Updated: 2022/03/10 13:53:11 by mvan-der      ########   odam.nl         */
+/*   Updated: 2022/03/10 14:54:51 by mvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 
 		// size_t len = strlen(data->player1->tile_set);
 		if (upper == 0) /* We are all out of characters */
-			return (printf("Game over!\n"));
+			return (printf(EMPTYBAG));
 		/* Select a character at random */
 		int rv = (arc4random() % (upper - lower + 1)) + lower;
 		data->player1->tile1 = data->player1->tile_set[rv];
@@ -104,7 +104,7 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 		data->player1->tile_set[upper - 1] = '\0';
 		upper = strlen(data->player1->tile_set); //reducing upper limit for using arc4random
 		if (upper == 0) /* We are all out of characters */
-			return (printf("Game over!\n"));
+			return (printf(EMPTYBAG));
 		/* Select a character at random */
 		rv = (arc4random() % (upper - lower + 1)) + lower;
 		data->player1->tile2 = data->player1->tile_set[rv];
@@ -121,7 +121,7 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 
 		// size_t len = strlen(data->player2->tile_set);
 		if (upper == 0) /* We are all out of characters */
-			return (printf("Game over!\n"));
+			return (printf(EMPTYBAG));
 		/* Select a character at random */
 		int rv = (arc4random() % (upper - lower + 1)) + lower;
 		data->player2->tile1 = data->player2->tile_set[rv];
@@ -130,7 +130,7 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 		data->player2->tile_set[upper - 1] = '\0';
 		upper = strlen(data->player2->tile_set); //updating upper limit for using arc4random
 		if (upper == 0) /* We are all out of characters */
-			return (printf("Game over!\n"));
+			return (printf(EMPTYBAG));
 		/* Select a character at random */
 		rv = (arc4random() % (upper - lower + 1)) + lower;
 		data->player2->tile2 = data->player2->tile_set[rv];
@@ -141,15 +141,20 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 	}
 	else
 	{
-		printf("ERROR!!!\n");
+		printf("There is no current player... kind of gamebreaking\n");
 		return(0);
 	}
 }
 
-void	ft_create_bags_of_colors(t_vari *data)
+int	ft_create_bags_of_colors(t_vari *data)
 {
 	data->player1 = ft_create_bag_of_colors(data, "b", "c");
+	if (!data->player1)
+		return (-1);
 	data->player2 = ft_create_bag_of_colors(data, "d", "e");
+	if (!data->player2)
+		return (-1);
+	return (0);
 }
 
 t_player	*ft_create_bag_of_colors(t_vari *data, char *color1, char *color2)

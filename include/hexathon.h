@@ -10,6 +10,7 @@
 # define INROW 3
 # include <string.h>
 # include <time.h>
+# define EMPTYBAG "No more tiles, you lose\n"
 
 typedef struct s_player
 {
@@ -51,4 +52,5 @@ mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
 //void    	ft_win(void *invar);
 char		*ft_itoa(int n);
 void		ft_update_bag(t_vari *data, char color);
+void		ft_free_at_last(t_vari *data);
 #endif
