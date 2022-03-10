@@ -6,85 +6,13 @@
 /*   By: mvan-der <mvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:45:38 by mvan-der      #+#    #+#                 */
-/*   Updated: 2022/03/10 14:54:51 by mvan-der      ########   odam.nl         */
+/*   Updated: 2022/03/10 16:10:59 by mvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdio.h>
 #include "../include/hexathon.h"
-
-char	*ft_charjoin(char const *s1, char s2)
-{
-	char	*newstr;
-	size_t	i;
-	size_t	j;
-
-	if (!s1 || !s2)
-		return (0);
-	newstr = calloc(sizeof(char), strlen(s1) + 2);
-	if (!newstr)
-		return (0);
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-	{
-		newstr[j] = s1[i];
-		i++;
-		j++;
-	}
-	newstr[j] = s2;
-	free(s1);
-	return (newstr);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	char	*newstr;
-	size_t	i;
-	size_t	j;
-
-	if (!s1 || !s2)
-		return (0);
-	newstr = calloc(sizeof(char), strlen(s1) + strlen(s2) + 1);
-	if (!newstr)
-		return (0);
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-	{
-		newstr[j] = s1[i];
-		i++;
-		j++;
-	}
-	i = 0;
-	while (s2[i] != '\0')
-	{
-		newstr[j] = s2[i];
-		i++;
-		j++;
-	}
-	free(s1);
-	return (newstr);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*dest;
-	size_t	i;
-
-	dest = malloc(strlen(s) + 1);
-	if (!dest)
-		return (0);
-	i = 0;
-	while (s[i] != '\0')
-	{
-		dest[i] = s[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
 
 int 	ft_picking_tiles(t_vari *data, int current_player)
 {
@@ -97,7 +25,8 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 		if (upper == 0) /* We are all out of characters */
 			return (printf(EMPTYBAG));
 		/* Select a character at random */
-		int rv = (arc4random() % (upper - lower + 1)) + lower;
+		int rv = (arc4random() % (upper - lower)) + lower;
+		printf("random number? %d\n", rv);
 		data->player1->tile1 = data->player1->tile_set[rv];
 		/* Remove the selected character from the set */ 
 		data->player1->tile_set[rv] = data->player1->tile_set[upper - 1];
@@ -106,7 +35,7 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 		if (upper == 0) /* We are all out of characters */
 			return (printf(EMPTYBAG));
 		/* Select a character at random */
-		rv = (arc4random() % (upper - lower + 1)) + lower;
+		rv = (arc4random() % (upper - lower)) + lower;
 		data->player1->tile2 = data->player1->tile_set[rv];
 		/* Remove the selected character from the set */ 
 		data->player1->tile_set[rv] = data->player1->tile_set[upper - 1];
@@ -123,7 +52,8 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 		if (upper == 0) /* We are all out of characters */
 			return (printf(EMPTYBAG));
 		/* Select a character at random */
-		int rv = (arc4random() % (upper - lower + 1)) + lower;
+		int rv = (arc4random() % (upper - lower)) + lower;
+		printf("random number? %d\n", rv);
 		data->player2->tile1 = data->player2->tile_set[rv];
 		/* Remove the selected character from the set */ 
 		data->player2->tile_set[rv] = data->player2->tile_set[upper - 1];
@@ -132,7 +62,7 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 		if (upper == 0) /* We are all out of characters */
 			return (printf(EMPTYBAG));
 		/* Select a character at random */
-		rv = (arc4random() % (upper - lower + 1)) + lower;
+		rv = (arc4random() % (upper - lower)) + lower;
 		data->player2->tile2 = data->player2->tile_set[rv];
 		/* Remove the selected character from the set */ 
 		data->player2->tile_set[rv] = data->player2->tile_set[upper - 1];

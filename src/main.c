@@ -18,6 +18,10 @@ void	ft_gameloop(t_vari *data, mlx_texture_t **hexagons)
 {
 	data->currentplayer = ft_turn();
 	printf("player %d\n", data->currentplayer);
+	if (data->currentplayer == 1)
+		ft_picking_tiles(data, 1); //player 1, 2 tiles
+	if (data->currentplayer == 2)
+		ft_picking_tiles(data, 2); //player 2, 2 tiles
 	ft_convert_input(data);
 	ft_draw(data, data->img, hexagons);
 	ft_makeoutput(data);
@@ -44,10 +48,6 @@ int		main(int argc, char *argv[])
 	data.max_colors = (data.max_tiles / 16) * 4;
 	data.grid = ft_grid(&data);
 	ft_create_bags_of_colors(&data);
-	if (data.currentplayer == 1)
-		ft_picking_tiles(&data, 1); //player 1, 2 tiles
-	if (data.currentplayer == 2)	
-		ft_picking_tiles(&data, 2); //player 2, 2 tiles
 	mlx = mlx_init(WIDTH, HEIGHT, "hexathon", false);
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;

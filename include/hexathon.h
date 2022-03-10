@@ -60,7 +60,7 @@ char	*ft_charjoin(char const *s1, char s2);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strdup(const char *s);
 int 	ft_picking_tiles(t_vari *data, int current_player);
-void	ft_create_bags_of_colors(t_vari *data);
+int		ft_create_bags_of_colors(t_vari *data);
 t_player	*ft_create_bag_of_colors(t_vari *data, char *color1, char *color2);
 void	ft_update_bag(t_vari *data, char color);
 //convertinput
