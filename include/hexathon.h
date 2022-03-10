@@ -49,4 +49,5 @@ t_player	*ft_create_bag_of_colors(t_vari *data, char *color1, char *color2);
 int			ft_picking_tiles(t_vari *data, int current_player);
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
 //void    	ft_win(void *invar);
+void		ft_update_bag(t_vari *data, char color);
 #endif
