@@ -86,12 +86,13 @@ bool    ft_wincheck(t_vari	*data)
     return(false);
 }
 
-void    ft_win(t_vari	*data)
+bool    ft_win(t_vari	*data)
 {
-    ft_draw(data, data->img);
     if (ft_wincheck(data))
     {
-        printf("you won!");
+		printf("you won!");
+		return (true);
         //mlx_close_window(data->mlx);
     }
+	return(false);
 }

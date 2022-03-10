@@ -2,7 +2,14 @@
 
 void    ft_convert_input(t_vari *data)
 {
-    char    input[] = "bllls";
+	char *input;
+
+	input = calloc(10, sizeof(int));
+    if (data->currentplayer == 1)
+		input = "blls";
+	if (data->currentplayer == 2)
+		input = "drrrs";
+
 	if (!input)
 	{
 		printf("no input");
@@ -47,8 +54,8 @@ void    ft_convert_input(t_vari *data)
 			{
 				xpos -= 1;
 			}
-			else
-				ft_rotate_left();
+			//else
+				//ft_rotate_left();
 		}
 		else if (input[i] == 'r')
 		{
@@ -56,7 +63,7 @@ void    ft_convert_input(t_vari *data)
 				xpos += 1;
 			else
 			{
-				ft_rotate_right();
+				//ft_rotate_right();
 			}
 		}
 		else if (input[i] == 's' && input[i+1] == '\0')

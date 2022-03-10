@@ -14,15 +14,28 @@ int	ft_turn()
 	return (2);
 }
 
+void	ft_gameloop(t_vari *data, mlx_texture_t **hexagons)
+{
+	data->currentplayer = ft_turn();
+	printf("player %d\n", data->currentplayer);
+	ft_convert_input(data);
+	ft_draw(data, data->img, hexagons);
+	ft_makeoutput(data);
+}
+
 int		main(int argc, char *argv[])
 {
 	t_vari		data;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
+	mlx_texture_t *hexagons[] = {
+		mlx_load_png("include/hexa.png"),
+		mlx_load_png("include/hexb.png"),
+		mlx_load_png("include/hexc.png"),
+		mlx_load_png("include/hexd.png"),
+		mlx_load_png("include/hexe.png"),
+	};
 
-	data.currentplayer = ft_turn();
-
-	printf("%d", data.currentplayer);
 	data.shape = 0;
 	data.size = SIDE;
 	data.colors = 2;
@@ -39,15 +52,13 @@ int		main(int argc, char *argv[])
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;
 	data.img = img;
-	ft_convert_input(&data);
-	ft_convert_input(&data);
-	ft_convert_input(&data);
-	ft_draw(&data, img);
-	ft_win(&data);
+	while (ft_win(&data) == false)
+	{
+		ft_gameloop(&data, hexagons);
+	}
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_key_hook(mlx, ft_keypress, &data);
 	mlx_put_string(mlx, "choose:", 15, 20);
-	ft_makeoutput(&data);
 	mlx_loop(mlx);
 
 	// int i;

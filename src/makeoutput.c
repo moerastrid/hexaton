@@ -58,6 +58,4 @@ void	ft_makeoutput(t_vari *data)
 	write(fd, ",", 1);
 	write(fd, mapstring, strlen(mapstring));
 	write(fd, "\n", 1);
-
-	write(fd, "tot", 3);
 }
