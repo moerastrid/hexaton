@@ -50,4 +50,5 @@ int			ft_picking_tiles(t_vari *data, int current_player);
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
 //void    	ft_win(void *invar);
 char		*ft_itoa(int n);
+void		ft_update_bag(t_vari *data, char color);
 #endif
