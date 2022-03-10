@@ -57,25 +57,6 @@ typedef struct s_loopdata
 }		t_loopdata;
 
 
-/*
-char		**ft_setup_grid(int side);
-//int			ft_total_size_grid(t_vari *data);
-char		**ft_grid(t_vari *data);
-void		ft_pixelputwrap(mlx_image_t *img, int x, int y, unsigned int color);
-void		ft_draw(t_vari *data, mlx_image_t *img, mlx_texture_t *hexagons[]);
-void		ft_draw_hexagon(int32_t x, int32_t y, mlx_image_t *img, char c, t_vari *data, mlx_texture_t *hexagons[]);
-char		*random_tile_grabber1(t_vari *data);
-char		random_tile_grabber2(t_vari *data);
-// void		ft_create_bag_of_colors(t_vari *data);
-t_player	*ft_create_bag_of_colors(t_vari *data, char *color1, char *color2);
-int			ft_picking_tiles(t_vari *data, int current_player);
-mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
-//void    	ft_win(void *invar);
-char		*ft_itoa(int n);
-void		ft_update_bag(t_vari *data, char color);
-*/
-
-
 //bag_of_colors
 char	*ft_charjoin(char *s1, char s2);
 char	*ft_strjoin(char *s1, char *s2);
