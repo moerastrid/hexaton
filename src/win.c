@@ -86,18 +86,13 @@ bool    ft_wincheck(t_vari	*data)
     return(false);
 }
 
-void    ft_win(t_vari	*data)
+bool    ft_win(t_vari	*data)
 {
-    data->grid[1][0] = 'c';
-	data->grid[2][1] = 'c';
-    data->grid[1][2] = 'c';
-	//data->grid[2][2] = 'c';
-    data->grid[3][2] = 'c';
-	data->grid[4][2] = 'c';
-    ft_draw(data, data->img);
     if (ft_wincheck(data))
     {
-        printf("you won!");
+		printf("you won!");
+		return (true);
         //mlx_close_window(data->mlx);
     }
+	return(false);
 }
