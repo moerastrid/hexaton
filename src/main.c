@@ -31,7 +31,7 @@ void	gameloop(void *invar)
 			//mlx_close_window(loopdata->data->mlx);
 			return;
 		}
-		ft_makeoutput(loopdata->data);
+		// ft_makeoutput(loopdata->data);
 		char mijnstring[] = "hoi\n";
 		dprintf(loopdata->player_bot1->stdin[1], "%s", mijnstring);
 		sleep(1);
@@ -45,7 +45,7 @@ void	gameloop(void *invar)
 			printf("P2 loses");
 			mlx_close_window(loopdata->data->mlx);
 		}
-		ft_makeoutput(loopdata->data);
+		// ft_makeoutput(loopdata->data);
 		char mijnstring[] = "hoi2\n";
 		dprintf(loopdata->player_bot2->stdin[1], "%s", mijnstring);
 		sleep(1);
@@ -70,13 +70,19 @@ int		main(int argc, char *argv[])
 		mlx_load_png("include/hexd.png"),
 		mlx_load_png("include/hexe.png"),
 	};
+
+	if (argc != 3)
+	{
+		printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
+		return (1);
+	}
+
 	player_bot_t player_bot1;
-    player_bot_t player_bot2;
+	player_bot_t player_bot2;
 	bzero(&player_bot1, sizeof(player_bot_t));
 	bzero(&player_bot2, sizeof(player_bot_t));
-    init_player(argv[1], &player_bot1);
-    init_player(argv[2], &player_bot2);
-
+	init_player(argv[1], &player_bot1);
+	init_player(argv[2], &player_bot2);
 
 	data.shape = 0;
 	data.size = SIDE;
@@ -85,7 +91,12 @@ int		main(int argc, char *argv[])
 	data.max_tiles = (3 * (data.size * data.size)) - (3 * data.size) + 1;
 	data.max_colors = (data.max_tiles / 16) * 4;
 	data.grid = ft_grid(data.size);
-	ft_create_bags_of_colors(&data);
+	if(ft_create_bags_of_colors(&data) == -1)
+	{
+		printf(BAGERROR);
+		ft_free_at_last(&data);
+		return(0);
+	}
 	mlx = mlx_init(WIDTH, HEIGHT, "hexathon", false);
 	img = mlx_new_image(mlx, mlx->width, mlx->height);
 	data.mlx = mlx;

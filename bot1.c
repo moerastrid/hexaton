@@ -8,7 +8,7 @@
 int	 main(void)
 {
 	char input_string[1000];
-	char *output_string = "a";
+	char *output_string = "brrs";
 
 	while(1)
 	{

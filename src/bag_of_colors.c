@@ -6,7 +6,7 @@
 /*   By: mvan-der <mvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/09 10:45:38 by mvan-der      #+#    #+#                 */
-/*   Updated: 2022/03/10 21:49:52 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/10 22:05:58 by mvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int 	ft_picking_tiles(t_vari *data, int current_player)
 	else
 	{
 		printf("There is no current player... kind of gamebreaking\n");
-		return(0);
+		return(-1);
 	}
 }
 

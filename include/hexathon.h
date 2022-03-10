@@ -15,6 +15,8 @@
 # define SIDE 4
 # define INROW 3
 # define EMPTYBAG "No more tiles, you lose\n"
+# define BAGERROR "Creating the bag of colors failed for some reason\n"
+
 typedef struct s_player
 {
 	char	*tile_set;
@@ -105,7 +107,7 @@ int		ft_turn();
 void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[], player_bot_t *player_bot1, player_bot_t *player_bot2);
 //makeoutput
 char	*ft_convert_map(t_vari *data);
-void	ft_makeoutput(t_vari *data);
+char	*ft_makeoutput(t_vari *data);
 //win
 bool ft_checkbelow(int j, int i, t_vari *data, char currentc, int counter);
 bool ft_checktoside(int j, int i, t_vari *data, char currentc, int counter);
