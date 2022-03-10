@@ -70,6 +70,7 @@ int init_player(const char* path, player_t* player)
     else
     {
         //Parent process save pids of the children
+		printf("===========\n");
         printf("Player %s pid: %d\n", path, pid);
         player->pid = pid;
         //Close the pipes
@@ -88,7 +89,7 @@ int init_player(const char* path, player_t* player)
 int main(int argc, const char* argv[])
 {
 
-    if (argc != 2)
+    if (argc != 3)
     {
         printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
         return 1;
@@ -96,6 +97,7 @@ int main(int argc, const char* argv[])
     player_t player;
 	bzero(&player, sizeof(player_t));
     init_player(argv[1], &player);
+    init_player(argv[2], &player);
 
     int winner = 0;
     while (!winner)
@@ -111,12 +113,12 @@ int main(int argc, const char* argv[])
 
             char* line = NULL;
             size_t len = 0;
-            //send board state to the player
-            dprintf(player.stdin[STDOUT_FILENO], "lalalal 5\n");
-            //read player move from the pipes
-			printf("aline\n");
-			sleep(1);
 			int test;
+            //send board state to the player
+            dprintf(player.stdin[STDOUT_FILENO], "lalalal 6\n");
+            //read player move from the pipes
+			printf("===========\n");
+			sleep(1);
             fscanf(player.reader, "%d", &test);
             printf("result %d\n", test);
             free(line);
