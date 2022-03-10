@@ -6,7 +6,7 @@
 /*   By: ageels <ageels@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/07 19:30:43 by ageels        #+#    #+#                 */
-/*   Updated: 2022/03/09 16:13:28 by ageels        ########   odam.nl         */
+/*   Updated: 2022/03/10 23:57:20 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_pixelputwrap(mlx_image_t *img, int x, int y, unsigned int color)
 	if (x < img->width && y < img->height)
 		mlx_put_pixel(img, x, y, color);
 	else
-		printf("trying to put pixels outside your image");
+		printf("error\n");
 }
 
 void	mlx_draw_texture_wrap(mlx_image_t *img, mlx_texture_t *texture, int32_t x, int32_t y)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   hexathon.h                                         :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ageels <ageels@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/11 00:07:22 by ageels        #+#    #+#                 */
+/*   Updated: 2022/03/11 00:36:09 by ageels        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HEXATHON_H
 # define HEXATHON_H
 # include <stdlib.h>
@@ -12,8 +24,9 @@
 
 # define WIDTH 1200
 # define HEIGHT 1200
-# define SIDE 4
-# define INROW 3
+# define SIDE 5
+# define INROW 4
+# define WAITTIME 1
 # define EMPTYBAG "No more tiles, you lose\n"
 # define BAGERROR "Creating the bag of colors failed for some reason\n"
 
@@ -73,7 +86,7 @@ void	ft_draw(t_vari *data,mlx_texture_t *hexagons[]);
 //fill
 void    ft_fill(t_vari *data);
 //gravity
-void    gravity(char **grid, int xpos);
+void    gravity(t_vari *data, int xpos);
 void	full_one_eighty(char **grid, int size);
 //grid
 char	**ft_grid(int side);
@@ -83,11 +96,11 @@ int init_player(const char* path, player_bot_t* player);
 char	*ft_itoa(int n);
 //keypress
 mlx_keyfunc	ft_keypress(mlx_key_data_t keydata, void *invar);
-//main
+//turn
 int		ft_turn();
-void	ft_gameloop(t_vari *data, mlx_texture_t *hexagons[], player_bot_t *player_bot1, player_bot_t *player_bot2);
+//gameloop
+void	gameloop(void *invar);
 //makeoutput
-char	*ft_convert_map(t_vari *data);
 char	*ft_makeoutput(t_vari *data);
 //win
 bool ft_checkbelow(int j, int i, t_vari *data, char currentc, int counter);

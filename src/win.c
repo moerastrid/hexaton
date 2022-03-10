@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   win.c                                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ageels <ageels@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/11 00:07:08 by ageels        #+#    #+#                 */
+/*   Updated: 2022/03/11 00:07:09 by ageels        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/hexathon.h"
-#include <stdio.h>
 
 bool ft_checkbelow(int j, int i, t_vari *data, char currentc, int counter)
 {
@@ -90,9 +101,7 @@ bool    ft_win(t_vari	*data)
 {
     if (ft_wincheck(data))
     {
-		printf("you won!");
 		return (true);
-        //mlx_close_window(data->mlx);
     }
 	return(false);
 }

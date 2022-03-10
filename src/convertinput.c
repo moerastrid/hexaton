@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   convertinput.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: ageels <ageels@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/11 00:04:16 by ageels        #+#    #+#                 */
+/*   Updated: 2022/03/11 00:34:34 by ageels        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/hexathon.h"
 
 void    ft_convert_input(t_vari *data, char *input)
@@ -36,13 +48,25 @@ void    ft_convert_input(t_vari *data, char *input)
 			ft_update_bag(data, color);
 		}
 		else if (input[i] == 'l')
-			xpos -= 1;
+		{
+			if(xpos < (2 * data->size) -2 && xpos > 0)
+				xpos -= 1;
+		}
 		else if (input[i] == 'r')
-			xpos += 1;
+		{
+			if(xpos < (2 * data->size) -2 && xpos > 0)
+				xpos += 1;
+		}
 		else if (input[i] == 's' && input[i+1] == '\0')
 		{
-			data->grid[xpos][0] = color;
-			gravity(data->grid, xpos);
+			if (data->grid[xpos][0] == 'a')
+				data->grid[xpos][0] = color;
+			else
+			{
+				printf("invalid input");
+				mlx_close_window(data->mlx);
+			}
+			gravity(data, xpos);
 			return ;
 		}
 		else

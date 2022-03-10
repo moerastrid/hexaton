@@ -6,7 +6,7 @@
 /*   By: W2Wizard <w2.wizzard@gmail.com>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/28 01:24:36 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/03/09 13:43:43 by lde-la-h      ########   odam.nl         */
+/*   Updated: 2022/03/10 23:45:48 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,26 @@ static void mlx_render_images(mlx_t* mlx)
 }
 
 //= Public =//
+
+typedef void (*cringe_hook)(void*);
+
+static bool check_hook(void* lvalue, void* rvalue)
+{
+	const cringe_hook* lval = lvalue;
+	const mlx_hook_t* rval = rvalue;
+
+	return (lval == (cringe_hook*)rval->func);
+}
+
+void mlx_remove_hook(mlx_t* mlx, void (*f)(void*))
+{
+    mlx_ctx_t* mlxctx = mlx->context;
+
+    mlx_list_t* hook = mlx_lstremove(&mlxctx->hooks, f, (void *)check_hook);
+    if (!hook)
+        return;
+    mlx_freen(2, hook->content, hook);
+}
 
 bool mlx_loop_hook(mlx_t* mlx, void (*f)(void*), void* param)
 {

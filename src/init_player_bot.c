@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   init_player_bot.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: rbeens <rbeens@student.codam.nl>             +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/11 00:06:13 by rbeens        #+#    #+#                 */
+/*   Updated: 2022/03/11 00:06:26 by ageels        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/hexathon.h"
 
 int init_player(const char* path, player_bot_t* player)
@@ -42,8 +54,6 @@ int init_player(const char* path, player_bot_t* player)
     else
     {
         //Parent process save pids of the children
-		printf("===========\n");
-        printf("Player %s pid: %d\n", path, pid);
         player->pid = pid;
         //Close the pipes
         close(player->stdin[STDIN_FILENO]);//IN FOR PLAYER SO CLOSE IN 

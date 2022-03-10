@@ -6,7 +6,7 @@
 /*   By: W2Wizard <w2.wizzard@gmail.com>              +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/12/28 00:33:01 by W2Wizard      #+#    #+#                 */
-/*   Updated: 2022/03/09 13:44:52 by lde-la-h      ########   odam.nl         */
+/*   Updated: 2022/03/10 23:44:31 by ageels        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -621,5 +621,6 @@ void mlx_set_instance_depth(mlx_instance_t* instance, int32_t zdepth);
  * @return Image ptr to the string.
  */
 mlx_image_t* mlx_put_string(mlx_t* mlx, const char* str, int32_t x, int32_t y);
+
 
 #endif

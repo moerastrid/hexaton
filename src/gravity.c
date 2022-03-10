@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   gravity.c                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: bde-meij <bde-meij @student.codam.nl>        +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2022/03/11 00:05:49 by bde-meij      #+#    #+#                 */
+/*   Updated: 2022/03/11 00:25:47 by ageels        ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/hexathon.h"
 
-void    gravity(char **grid, int xpos)
+void    gravity(t_vari *data, int xpos)
 {
     int     i;
     char    c;
     i = 0;
-    while ((grid[xpos][i] != 'a') && (grid[xpos][i + 1] == 'a'))
+    while ((data->grid[xpos][i] != 'a') && (data->grid[xpos][i + 1] == 'a'))
     {
-        c = grid[xpos][i];
-        grid[xpos][i] = 'a';
-        grid[xpos][i + 1] = c;
+        c = data->grid[xpos][i];
+        data->grid[xpos][i] = 'a';
+        data->grid[xpos][i + 1] = c;
         i += 1;
     }
 }
