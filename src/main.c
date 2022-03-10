@@ -75,5 +75,6 @@ int		main(int argc, char *argv[])
     //     printf("Usage: %s <player1_exe> <player2_exe>\n", argv[0]);
     //     return 1;
     // }
-	// return (0);
+	ft_free_at_last(&data);
+	return (0);
 }

@@ -42,8 +42,10 @@ void	ft_makeoutput(t_vari *data)
 	mapstring = ft_convert_map(data);
 	//write(fd, "vanaf", 5);
 	write(fd, side, strlen(side));
+	free(side);
 	write(fd, ",", 1);
 	write(fd, inrow, strlen(inrow));
+	free(inrow);
 	write(fd, ",", 1);
 	if (data->currentplayer == 1)
 	{
@@ -57,5 +59,6 @@ void	ft_makeoutput(t_vari *data)
 	}
 	write(fd, ",", 1);
 	write(fd, mapstring, strlen(mapstring));
+	free(mapstring);
 	write(fd, "\n", 1);
 }

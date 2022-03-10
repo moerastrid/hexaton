@@ -10,6 +10,7 @@
 # define INROW 4
 # include <string.h>
 # include <time.h>
+# define EMPTYBAG "No more tiles, you lose\n"
 
 typedef struct s_player
 {
@@ -95,4 +96,7 @@ uint32_t ft_getpixel(uint8_t* pixel);
 bool my_mlx_draw_texture(mlx_image_t* image, mlx_texture_t* texture, int32_t x, int32_t y);
 void	ft_pixelputwrap(mlx_image_t *img, int x, int y, unsigned int color);
 void	mlx_draw_texture_wrap(mlx_image_t *img, mlx_texture_t *texture, int32_t x, int32_t y);
+//free_stuff
+void		ft_free_at_last(t_vari *data);
+
 #endif
